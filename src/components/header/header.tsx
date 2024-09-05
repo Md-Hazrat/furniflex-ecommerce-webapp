@@ -1,29 +1,25 @@
+"use client";
 import React from "react";
-import Link from "next/link";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 const Header = () => {
   return (
-    <nav>
-      <div className="navbar justify-between bg-base-300">
-        <Link href="/" className="btn btn-ghost text-lg">
-          FurniFlex
-        </Link>
-        <ul className="flex">
-          <li>
-            <Link href="/cart" className="btn btn-ghost rounded-btn">
-              cart
-            </Link>
-          </li>
-
-          <li>
-            <Link href="/signin" className="btn btn-ghost rounded-btn">
-              signin
-            </Link>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
+    <Navbar expand="lg" className="bg-body-tertiary container">
+      <Container>
+        <Navbar.Brand href="#home">FurniFlex</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Categories</Nav.Link>
+            <Nav.Link href="#link">Custom</Nav.Link>
+            <Nav.Link href="#link">Blogs</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
