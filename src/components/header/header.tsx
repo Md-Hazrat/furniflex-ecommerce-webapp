@@ -40,7 +40,7 @@ const Header = () => {
         </Row>
       </Navbar>
       <div>
-      <hr className="my-4" style={{ color: "gray" }} />
+        <hr className="my-4" style={{ color: "gray" }} />
       </div>
     </div>
   );

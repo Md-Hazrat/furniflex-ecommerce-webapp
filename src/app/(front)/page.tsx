@@ -1,7 +1,7 @@
 import ProductList from "@/components/products/productList";
 import data from "@/models/data";
 
-export default function Home() {
+const HomePage = () => {
   return (
     <div className="container">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
@@ -9,4 +9,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default HomePage;

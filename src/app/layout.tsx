@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Barlow } from "next/font/google";
-import Header from "@/components/header/header";
-import Footer from "@/components/footer/footer";
 
 export const metadata: Metadata = {
   title: "FurniFlex E-commerce",
@@ -24,11 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={barlow.className}>
-        <div>
-          <Header />
-          {children}
-          <Footer />
-        </div>
+        <div>{children}</div>
       </body>
     </html>
   );

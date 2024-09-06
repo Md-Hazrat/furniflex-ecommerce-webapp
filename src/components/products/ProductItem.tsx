@@ -21,12 +21,13 @@ const ProductItem = ({ product }: ProductItemProps) => {
         <Card.Body>
           <Card.Title>Recliner Chair Wood</Card.Title>
           <Card.Text>
-            It has a backrest that can be tilted back, and often a footrest extended.
+            It has a backrest that can be tilted back, and often a footrest
+            extended.
           </Card.Text>
           <div className="d-flex justify-content-between">
-            <h4>${product?.price}</h4>
+            <h4> €{product?.price}</h4>
             <Card.Text>
-              <del>${product?.price}</del>
+              <h4>€<del>{product?.price}</del></h4>
             </Card.Text>
             <h4 className="text-danger">30% OFF</h4>
           </div>
