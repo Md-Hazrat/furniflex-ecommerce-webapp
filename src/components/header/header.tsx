@@ -38,8 +38,10 @@ const Header = () => {
             <p className="cursor-pointer mb-0">Login</p>
           </Col>
         </Row>
-        <hr className="my-4" style={{ color: "red" }} />
       </Navbar>
+      <div>
+      <hr className="my-4" style={{ color: "gray" }} />
+      </div>
     </div>
   );
 };
