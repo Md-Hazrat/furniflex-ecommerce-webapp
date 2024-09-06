@@ -26,8 +26,8 @@ const ProductItem = ({ product }: ProductItemProps) => {
           </Card.Text>
           <div className="d-flex justify-content-between">
             <h4> €{product?.price}</h4>
-            <Card.Text>
-              <h4>€<del>{product?.price}</del></h4>
+            <Card.Text className="fs-4">
+              €<del>{product?.price}</del>
             </Card.Text>
             <h4 className="text-danger">30% OFF</h4>
           </div>

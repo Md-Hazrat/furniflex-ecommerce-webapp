@@ -34,7 +34,11 @@ const Header = () => {
             className="d-flex justify-content-end gap-4 align-items-center"
             md={3}
           >
-            <p className="cursor-pointer mb-0">Cart</p>
+            <div className="position-relative d-inline-block">
+              <Image src={"/images/cart.png"} alt="cart icon" height={24} width={24} />
+              {/* <div>2</div> */}
+            </div>
+
             <p className="cursor-pointer mb-0">Login</p>
           </Col>
         </Row>
