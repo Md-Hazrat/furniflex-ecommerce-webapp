@@ -8,12 +8,38 @@
 }
 
 .hr-color {
-   color: "#7d89e4"
+  color: "#7d89e4";
 }
 
 /* Add this to your global CSS file or in a <style> tag in your component */
 .navbar-nav .dropdown-menu {
-  max-width: 200px; 
+  max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.image-bg {
+  background-color: #f2f2f2 !important;
+}
+
+.product-name {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+}
+
+.product-price {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.product-price-old {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color:  #ABABAB;
+  ;
+}
+
+.product-price-offer {
+  font-size: 18px !important;
+  font-weight: 600 !important;
 }

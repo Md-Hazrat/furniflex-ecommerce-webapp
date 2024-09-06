@@ -156,7 +156,7 @@ const SignUn = () => {
 
               <div className="text-center mt-3">
                 <p>
-                  Have an account? <Link href="/signin">Sign In</Link>
+                  Have an account? <Link href="/login">Sign In</Link>
                 </p>
               </div>
             </Card.Body>

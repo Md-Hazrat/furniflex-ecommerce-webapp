@@ -13,34 +13,40 @@ const ProductItem = ({ product }: ProductItemProps) => {
   return (
     <Col md={4}>
       <Card className="shadow-xl mb-4 rounded-2">
-        <Card.Img
-          src={product?.image}
-          alt={product?.name}
-          className="p-3 rounded-3"
-        />
+        <div className="p-3">
+          <div className="image-bg rounded-3">
+            <Card.Img
+              src={product?.image}
+              alt={product?.name}
+              className="p-3 rounded-3"
+            />
+          </div>
+        </div>
+
         <Card.Body>
-          <Card.Title>Recliner Chair Wood</Card.Title>
+          <Card.Title className="product-name">Recliner Chair Wood</Card.Title>
+          <div className="d-flex justify-content-between align-items-center my-3">
+            <p className="product-price mb-0"> &euro;{product?.price}</p>
+            <Card.Text className="product-price-old mb-0">
+              &euro;<del>{product?.price}</del>
+            </Card.Text>
+            <h4 className="text-danger product-price-offer mb-0">30% OFF</h4>
+          </div>
           <Card.Text>
             It has a backrest that can be tilted back, and often a footrest
             extended.
           </Card.Text>
-          <div className="d-flex justify-content-between">
-            <h4> €{product?.price}</h4>
-            <Card.Text className="fs-4">
-              €<del>{product?.price}</del>
-            </Card.Text>
-            <h4 className="text-danger">30% OFF</h4>
-          </div>
           <Button
             variant="secondary"
             size="lg"
             className="h-100 w-100 d-flex align-items-center justify-content-center bg-black"
           >
             <Image
-              src="/images/ecommerce.png"
+            className="me-3"
+              src="/images/cart-white.png"
               alt="ecommerce image"
-              width={14}
-              height={10}
+              width={17}
+              height={18}
             />
             Add to cart
           </Button>

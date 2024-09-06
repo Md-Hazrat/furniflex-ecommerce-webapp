@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Product } from "@/models/ProductModel";
 import { Col, Row } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -6,25 +7,59 @@ import ProductItem from "./ProductItem";
 
 interface ProductListProps {
   products: Product[];
-}
+} 
 
 const ProductList = ({ products }: ProductListProps) => {
+  const [activeCategory, setActiveCategory] = useState<number | null>(1);
+
+  const onClickSort = (categoryId: number) => {
+    setActiveCategory(categoryId);
+    console.log("selected category", categoryId);
+  };
+
   return (
     <div>
       <Row>
         <Col md={3}>
-          <ListGroup className="gap-5">
+          <ListGroup>
             <ListGroup.Item
               action
-              className="bg-black text-bg-danger mb-4 rounded-2"
+              active={activeCategory === 1}
+              onClick={() => onClickSort(1)}
+              style={{
+                backgroundColor: activeCategory === 1 ? "#000" : "#fff",
+                color: activeCategory === 1 ? "#fff" : "#000",
+                padding: "1rem",
+                borderColor: activeCategory === 1 ? "#000" : "rgb(246 240 240)",
+              }}
             >
-              <h4>Rocking chair</h4>
+              Rocking Chair
             </ListGroup.Item>
-            <ListGroup.Item action variant="" className="mb-4 p-2">
-              Side chair
+            <ListGroup.Item
+              action
+              active={activeCategory === 2}
+              onClick={() => onClickSort(2)}
+              style={{
+                backgroundColor: activeCategory === 2 ? "#000" : "#fff",
+                color: activeCategory === 2 ? "#fff" : "#000",
+                padding: "1rem",
+                borderColor: activeCategory === 2 ? "#000" : "rgb(246 240 240)",
+              }}
+            >
+              Side Chair
             </ListGroup.Item>
-            <ListGroup.Item action variant="" className="p-2">
-              Lounge chair
+            <ListGroup.Item
+              action
+              active={activeCategory === 3}
+              onClick={() => onClickSort(3)}
+              style={{
+                backgroundColor: activeCategory === 3 ? "#000" : "#fff",
+                color: activeCategory === 3 ? "#fff" : "#000",
+                padding: "1rem",
+                borderColor: activeCategory === 3 ? "#000" : "rgb(246 240 240)",
+              }}
+            >
+              Lounge Chair
             </ListGroup.Item>
           </ListGroup>
         </Col>
