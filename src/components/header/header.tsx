@@ -1,11 +1,10 @@
 "use client";
-import React, { useState } from "react";
 import Image from "next/image";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
 
   return (
     <div className="mb-5">
@@ -59,7 +58,7 @@ const Header = () => {
                 </Link>
               </Nav.Item>
 
-              {isLoggedIn ? (
+              {true ? (
                 <NavDropdown
                   title={
                     <Image

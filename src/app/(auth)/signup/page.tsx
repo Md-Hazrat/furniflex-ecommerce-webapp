@@ -17,7 +17,7 @@ import {
 const SignUn = () => {
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();

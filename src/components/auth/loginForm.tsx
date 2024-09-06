@@ -1,20 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Card,
-  FloatingLabel,
-  Form,
-} from "react-bootstrap";
+import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 
 const LoginForm = () => {
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -134,7 +126,7 @@ const LoginForm = () => {
 
           <div className="text-center mt-3">
             <p>
-              Don't have an account? <Link href="/signup">Sign Up</Link>
+              Don&apos;t have an account? <Link href="/signup">Sign Up</Link>
             </p>
           </div>
         </Card.Body>
