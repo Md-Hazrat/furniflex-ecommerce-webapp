@@ -1,51 +1,93 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { Col, Row } from "react-bootstrap";
-import Navbar from "react-bootstrap/Navbar";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import Link from "next/link";
 
 const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+
   return (
-    <div className="container p-4">
-      <Navbar>
-        <Row className="w-100">
-          <Col
-            className="d-flex gap-2 align-items-center justify-content-start"
-            md={3}
-          >
-            <Image
-              className="cursor-pointer me-2"
-              alt="logo"
-              src="/images/logo.png"
-              width={134}
-              height={38}
-            />
-          </Col>
+    <div className="mb-5">
+      <Navbar expand="lg" className="py-3 container">
+        <Container>
+          <Navbar.Brand>
+            <Link href={"/"}>
+              <Image
+                className="cursor-pointer"
+                alt="logo"
+                src="/images/logo.png"
+                width={134}
+                height={38}
+              />
+            </Link>
+          </Navbar.Brand>
 
-          <Col className="d-flex justify-content-center gap-4" md={6}>
-            <p className="cursor-pointer mb-0">Home</p>
-            <p className="cursor-pointer mb-0">Products</p>
-            <p className="cursor-pointer mb-0">Categories</p>
-            <p className="cursor-pointer mb-0">Custom</p>
-            <p className="cursor-pointer mb-0">Blog</p>
-          </Col>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mx-auto">
+              <Nav.Link href="#">Home</Nav.Link>
+              <Nav.Link href="#" active className="bg-light rounded-3">
+                Products
+              </Nav.Link>
+              <Nav.Link href="#">Categories</Nav.Link>
+              <Nav.Link href="#">Custom</Nav.Link>
+              <Nav.Link href="#">Blog</Nav.Link>
+            </Nav>
 
-          <Col
-            className="d-flex justify-content-end gap-4 align-items-center"
-            md={3}
-          >
-            <div className="position-relative d-inline-block">
-              <Image src={"/images/cart.png"} alt="cart icon" height={24} width={24} />
-              {/* <div>2</div> */}
-            </div>
+            <Nav className="ml-auto d-flex align-items-center">
+              <Nav.Item className="position-relative d-inline-block">
+                <Link href={"/cart"}>
+                  <Image
+                    src="/images/cart.png"
+                    alt="cart icon"
+                    height={24}
+                    width={24}
+                    className="cursor-pointer"
+                  />
+                  <div
+                    className="position-absolute translate-middle badge rounded-pill bg-black text-white"
+                    style={{
+                      fontSize: "0.6rem",
+                      padding: "0.2em 0.4em",
+                      top: "1.4rem",
+                      left: "1.2rem",
+                    }}
+                  >
+                    2
+                  </div>
+                </Link>
+              </Nav.Item>
 
-            <p className="cursor-pointer mb-0">Login</p>
-          </Col>
-        </Row>
+              {isLoggedIn ? (
+                <NavDropdown
+                  title={
+                    <Image
+                      src="/images/avatar.png"
+                      alt="avatar"
+                      height={30}
+                      width={30}
+                      className="rounded-circle cursor-pointer"
+                    />
+                  }
+                  id="user-dropdown"
+                  className="ms-3"
+                  align="end" // Aligns the dropdown to the right
+                >
+                  <NavDropdown.Item onClick={() => console.log("Logout")}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <Nav.Link href="/login" className="ms-3">
+                  Login
+                </Nav.Link>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
       </Navbar>
-      <div>
-        <hr className="my-4" style={{ color: "gray" }} />
-      </div>
+      <hr className="m-0 hr-color" />
     </div>
   );
 };

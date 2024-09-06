@@ -7,9 +7,11 @@ export default function FrontLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex-grow container mx-auto px-4">
+    <main>
       <Header />
+      <div className="container">
       {children}
+      </div>
       <Footer />
     </main>
   );

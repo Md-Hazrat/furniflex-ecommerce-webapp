@@ -42,9 +42,9 @@ const Footer = () => {
             <p className="cursor-pointer mb-2 opacity-75">Special Cases</p>
           </Col>
         </Row>
-       <div className="mb-4">
-       <hr style={{ color: "#7d89e4" }} />
-       </div>
+        <div className="mb-4">
+          <hr className="hr-color" />
+        </div>
         <Row>
           <Col className="d-flex" md={3}>
             <Image
