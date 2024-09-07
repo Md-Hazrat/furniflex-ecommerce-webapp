@@ -1,6 +1,7 @@
 export type Product =  {
-    _id?: string
+    id: number
     name: string
+    offerPercent: number;
     slug: string
     image: string
     banner?: string

@@ -6,19 +6,19 @@ import { Row, Col, Card, Button } from "react-bootstrap";
 const CartItem = () => {
   return (
     <div className="gap-2">
-      <Row>
+      <Row> 
         <Col md={8} className="">
           <div>
             <h3 className="mb-4">An overview of your order</h3>
-            <Card className="d-flex">
+            <Card className="d-flex image-bg p-3 border-0">
               <div className="d-flex">
                 <div>
                   <Card className="d-flex align-items-center justify-content-between flex-row m-4 ">
-                    <p className="mt-3  gap-1">
+                    <p className="mt-3  gap-1 cursor-pointer">
                       <i className="bi bi-dash"></i>
                     </p>
                     <p className="mt-3 p-1 gap-1">1</p>
-                    <p className="mt-3  gap-1">
+                    <p className="mt-3  gap-1 cursor-pointer">
                       <i className="bi bi-plus-lg"></i>
                     </p>
                   </Card>
@@ -29,7 +29,7 @@ const CartItem = () => {
                   alt="Chair image"
                   width={88}
                   height={88}
-                  style={{ boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)" }}
+                  style={{ backgroundColor: " #DEDEDE" }}
                 />
 
                 <div className="container d-flex justify-content-between m-3">
@@ -40,8 +40,8 @@ const CartItem = () => {
                   </p>
                 </div>
               </div>
-              <div className="container text-end">
-                <h6>€299.00</h6>
+              <div className=" text-end">
+                <h6>&euro;299.00</h6>
               </div>
             </Card>
           </div>
@@ -49,10 +49,10 @@ const CartItem = () => {
 
         <Col md={4} className="">
           <h3 className="mb-4">Oder details</h3>
-          <Card className="container d-flex justify-content-between mb-4 shadow-sm ">
+          <Card className="container d-flex justify-content-between mb-4 shadow-sm image-bg">
             <div className="d-flex justify-content-between">
               <p>Subtotal</p>
-              <p>€ 1071.00</p>
+              <p>&euro; 1071.00</p>
             </div>
             <div className="d-flex justify-content-between">
               <p>Shipping</p>
@@ -60,12 +60,12 @@ const CartItem = () => {
             </div>
             <div className="d-flex justify-content-between">
               <p>Estimated Tax</p>
-              <p>€ -</p>
+              <p>&euro; -</p>
             </div>
             <hr />
             <div className="d-flex justify-content-between mb-2">
               <h5>Total</h5>
-              <h5>€ 1071.00</h5>
+              <h5>&euro;1071.00</h5>
             </div>
           </Card>
           <Button className="w-100 mb-3 p-2" variant="dark">
