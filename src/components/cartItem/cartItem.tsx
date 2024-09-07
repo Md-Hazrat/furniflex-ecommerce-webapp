@@ -1,78 +1,87 @@
 "use client";
-import React from "react";
-import Image from "next/image";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Store } from "@/utils/store";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { useContext } from "react";
+import { Button, ListGroup } from "react-bootstrap";
 
 const CartItem = () => {
+  const { state, dispatch } = useContext(Store);
+  const { cartItems } = state?.cart;
+
+  const incrementQuantity = (item: any) => {
+    const newItem = { ...item, quantity: item?.quantity + 1 };
+    dispatch({ type: "CART_ADD_ITEM", payload: newItem });
+  };
+
+  const decrementQuantity = (item: any) => {
+    const newItem = { ...item, quantity: item?.quantity - 1 };
+    if (newItem?.quantity > 0) {
+      dispatch({ type: "CART_ADD_ITEM", payload: newItem });
+    } else {
+      dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+    }
+  };
+
+  const removeItem = (item: any) => {
+    dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+  };
+
   return (
-    <div className="gap-2">
-      <Row> 
-        <Col md={8} className="">
-          <div>
-            <h3 className="mb-4">An overview of your order</h3>
-            <Card className="d-flex image-bg p-3 border-0">
-              <div className="d-flex">
-                <div>
-                  <Card className="d-flex align-items-center justify-content-between flex-row m-4 ">
-                    <p className="mt-3  gap-1 cursor-pointer">
-                      <i className="bi bi-dash"></i>
-                    </p>
-                    <p className="mt-3 p-1 gap-1">1</p>
-                    <p className="mt-3  gap-1 cursor-pointer">
-                      <i className="bi bi-plus-lg"></i>
-                    </p>
-                  </Card>
-                </div>
+    <div className="container mb-4">
+      <h4 className="mb-5">An overview of your order</h4>
+      <div className="">
+        <ListGroup>
+          {cartItems?.map((item) => (
+            <ListGroup.Item
+              key={item?.id}
+              className="d-flex justify-content-between align-items-center image-bg p-4"
+            >
+              <div className="d-flex align-items-center">
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => decrementQuantity(item)}
+                >
+                  -
+                </Button>
+                <span className="mx-2">{item?.quantity}</span>
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => incrementQuantity(item)}
+                >
+                  +
+                </Button>
 
-                <Image
-                  src="/images/preview 2.png"
-                  alt="Chair image"
-                  width={88}
-                  height={88}
-                  style={{ backgroundColor: " #DEDEDE" }}
-                />
-
-                <div className="container d-flex justify-content-between m-3">
-                  <h6 className="">Recliner Chair Steel</h6>
-
-                  <p>
-                    <i className="bi bi-x"></i>
-                  </p>
+                <div className="d-flex ms-3 ">
+                  <div
+                    style={{ backgroundColor: "#DEDEDE" }}
+                    className="p-2 rounded-3"
+                  >
+                    <img
+                      src={item?.image}
+                      alt={item?.name}
+                      style={{ width: "80px", marginRight: "10px" }}
+                    />
+                  </div>
+                  <p className="ms-3">{item?.name}</p>
                 </div>
               </div>
-              <div className=" text-end">
-                <h6>&euro;299.00</h6>
-              </div>
-            </Card>
-          </div>
-        </Col>
 
-        <Col md={4} className="">
-          <h3 className="mb-4">Oder details</h3>
-          <Card className="container d-flex justify-content-between mb-4 shadow-sm image-bg">
-            <div className="d-flex justify-content-between">
-              <p>Subtotal</p>
-              <p>&euro; 1071.00</p>
-            </div>
-            <div className="d-flex justify-content-between">
-              <p>Shipping</p>
-              <p>Free</p>
-            </div>
-            <div className="d-flex justify-content-between">
-              <p>Estimated Tax</p>
-              <p>&euro; -</p>
-            </div>
-            <hr />
-            <div className="d-flex justify-content-between mb-2">
-              <h5>Total</h5>
-              <h5>&euro;1071.00</h5>
-            </div>
-          </Card>
-          <Button className="w-100 mb-3 p-2" variant="dark">
-            Go to Checkout
-          </Button>
-        </Col>
-      </Row>
+              <div className="d-flex flex-column gap-4 align-items-end">
+                <div className="">
+                  <i
+                    className="bi bi-x cursor-pointer"
+                    onClick={() => removeItem(item)}
+                    style={{ fontSize: "1.5rem" }}
+                  ></i>
+                </div>
+                <div className="">
+                  <span>&euro;{item?.price * item?.quantity}</span>
+                </div>
+              </div>
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </div>
     </div>
   );
 };

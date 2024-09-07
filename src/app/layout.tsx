@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./globals.css"; 
+import "bootstrap/dist/css/bootstrap.min.css"; 
 import { Barlow } from "next/font/google";
 import { StoreProvider } from "@/utils/store";
 import ToastProvider from "@/utils/toastProvider";

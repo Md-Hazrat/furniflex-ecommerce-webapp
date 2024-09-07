@@ -8,7 +8,7 @@ export type Product =  {
     price: number
     brand: string
     description: string
-    category: string
+    categoryId: number
     rating: number
     numReviews: number
     countInStock: number

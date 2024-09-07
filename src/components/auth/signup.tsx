@@ -1,17 +1,15 @@
 "use client";
-import Image from "next/image";
-import React, { useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Link from "next/link";
+import React, { useState } from "react";
 import {
-  Container,
-  Row,
-  Col,
   Button,
   Card,
+  Col,
   FloatingLabel,
   Form,
+  Row
 } from "react-bootstrap";
-import Link from "next/link";
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);

@@ -1,10 +1,17 @@
+
 "use client";
+import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-
+import { Store } from "@/utils/store";
+import { useAuth } from "@/utils/authContext";
 const Header = () => {
-  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const { state } = useContext(Store);
+  const { cartItems } = state.cart;
+  const { user, logout } = useAuth();
+
+  const cartItemCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <div className="mb-5">
@@ -44,21 +51,23 @@ const Header = () => {
                     width={24}
                     className="cursor-pointer"
                   />
-                  <div
-                    className="position-absolute translate-middle badge rounded-pill bg-black text-white"
-                    style={{
-                      fontSize: "0.6rem",
-                      padding: "0.2em 0.4em",
-                      top: "1.4rem",
-                      left: "1.2rem",
-                    }}
-                  >
-                    2
-                  </div>
+                  {cartItemCount > 0 && (
+                    <div
+                      className="position-absolute translate-middle badge rounded-pill bg-black text-white"
+                      style={{
+                        fontSize: "0.6rem",
+                        padding: "0.2em 0.4em",
+                        top: "1.4rem",
+                        left: "1.2rem",
+                      }}
+                    >
+                      {cartItemCount}
+                    </div>
+                  )}
                 </Link>
               </Nav.Item>
 
-              {true ? (
+              {user ? (
                 <NavDropdown
                   title={
                     <Image
@@ -71,9 +80,9 @@ const Header = () => {
                   }
                   id="user-dropdown"
                   className="ms-3"
-                  align="end" // Aligns the dropdown to the right
+                  align="end"
                 >
-                  <NavDropdown.Item onClick={() => console.log("Logout")}>
+                  <NavDropdown.Item onClick={() => logout()}>
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>

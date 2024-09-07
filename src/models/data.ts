@@ -25,7 +25,7 @@ const data = {
       brand: "Recliner Chair Wood",
       rating: 4.5,
       numReviews: 8,
-      countInStock: 4,
+      countInStock: 20,
       description: "A Recliner Chair Wood",
       isFeatured: true,
       banner: "/images/banner1.jpg",
