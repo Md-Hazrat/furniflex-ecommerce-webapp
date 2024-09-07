@@ -3,7 +3,7 @@ import LoginForm from "@/components/auth/loginForm";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Image from "next/image";
 import { Col, Row } from "react-bootstrap";
-import bgImage from '../../../../public/images/furniflex.png';
+import bgImage from '../../../image/furniFlex.png';
 
 const LoginPage = () => {
 

@@ -4,7 +4,7 @@ import React from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Row, Col } from "react-bootstrap";
 import SignUpForm from "@/components/auth/signup";
-import bgImage from '../../../../public/images/furniflex.png';
+import bgImage from '../../../image/furniFlex.png';
 
 const SignUpPage = () => {
   return (
