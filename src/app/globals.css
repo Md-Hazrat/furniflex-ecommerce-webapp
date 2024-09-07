@@ -60,3 +60,16 @@
   text-align: center;
   color: #ffffff;
 }
+
+.welcome-text {
+  width: 452px;
+  height: 29px;
+  gap: 0px;
+  opacity: 0;
+  font-family: "Barlow", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28.8px;
+  text-align: center;
+  background: #000000;
+}

@@ -4,6 +4,11 @@ import { useState } from "react";
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 
 const LoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -50,14 +55,21 @@ const LoginForm = () => {
 
             <FloatingLabel
               controlId="floatingPassword"
-              label="Enter your password"
-              className="mb-3"
+              label="Password"
+              className="mb-3 position-relative"
             >
               <Form.Control
-                type="password"
-                placeholder="Enter your password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
                 required
               />
+              <i
+                className={`bi ${
+                  showPassword ? "bi-eye-slash" : "bi-eye"
+                } position-absolute end-0 top-50 translate-middle-y me-2`}
+                style={{ cursor: "pointer" }}
+                onClick={handleTogglePassword}
+              ></i>
               <Form.Control.Feedback type="invalid">
                 Password is required.
               </Form.Control.Feedback>
@@ -123,7 +135,6 @@ const LoginForm = () => {
               </Button>
             </Col>
           </Row>
-
           <div className="text-center mt-3">
             <p>
               Don&apos;t have an account? <Link href="/signup">Sign Up</Link>

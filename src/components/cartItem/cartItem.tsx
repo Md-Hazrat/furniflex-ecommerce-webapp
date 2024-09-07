@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Row, Col, Card, Button } from "react-bootstrap";
@@ -12,7 +12,7 @@ const CartItem = () => {
             <h3 className="mb-4">An overview of your order</h3>
             <Card className="d-flex">
               <div className="d-flex">
-                <div >
+                <div>
                   <Card className="d-flex align-items-center justify-content-between flex-row m-4 ">
                     <p className="mt-3  gap-1">
                       <i className="bi bi-dash"></i>
@@ -28,8 +28,8 @@ const CartItem = () => {
                   src="/images/preview 2.png"
                   alt="Chair image"
                   width={88}
-                  height={88} 
-                  style={{ boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}} 
+                  height={88}
+                  style={{ boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)" }}
                 />
 
                 <div className="container d-flex justify-content-between m-3">
