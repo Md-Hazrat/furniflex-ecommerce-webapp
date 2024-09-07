@@ -3,6 +3,7 @@ import LoginForm from "@/components/auth/loginForm";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Image from "next/image";
 import { Col, Row } from "react-bootstrap";
+import bgImage from '../../../../public/images/furniflex.png';
 
 const LoginPage = () => {
 
@@ -21,7 +22,7 @@ const LoginPage = () => {
           md={6}
           className="d-flex align-items-center justify-content-center"
           style={{
-            backgroundImage: `url('/images/furniflex.png')`,
+            backgroundImage: `url(${bgImage?.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh",

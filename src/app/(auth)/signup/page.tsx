@@ -4,6 +4,7 @@ import React from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Row, Col } from "react-bootstrap";
 import SignUpForm from "@/components/auth/signup";
+import bgImage from '../../../../public/images/furniflex.png';
 
 const SignUpPage = () => {
   return (
@@ -20,7 +21,7 @@ const SignUpPage = () => {
           md={6}
           className="d-flex align-items-center justify-content-center"
           style={{
-            backgroundImage: `url('/images/furniflex.png')`,
+            backgroundImage: `url(${bgImage?.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh",
