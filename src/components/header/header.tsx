@@ -8,7 +8,7 @@ import { useAuth } from "@/utils/authContext";
 const Header = () => {
   const { state } = useContext(Store);
   const { cartItems } = state.cart;
-  const { user, logout } = useAuth();
+  const { user, logout, isAuthenticated } = useAuth();
 
   const cartItemCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -50,7 +50,7 @@ const Header = () => {
                     width={24}
                     className="cursor-pointer"
                   />
-                  {cartItemCount > 0 ? (
+                  {cartItemCount > 0 && isAuthenticated ? (
                     <div
                       className="position-absolute translate-middle badge rounded-pill bg-black text-white"
                       style={{
