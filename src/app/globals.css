@@ -35,11 +35,28 @@
 .product-price-old {
   font-size: 18px !important;
   font-weight: 500 !important;
-  color:  #ABABAB;
-  ;
+  color: #ababab;
 }
 
 .product-price-offer {
   font-size: 18px !important;
   font-weight: 600 !important;
+}
+
+.furni-text {
+  font-family: "Inter", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48.41px;
+  text-align: center;
+  color: #007bff;
+}
+
+.custom-text-style {
+  font-family: "Inter", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48.41px;
+  text-align: center;
+  color: #ffffff;
 }
