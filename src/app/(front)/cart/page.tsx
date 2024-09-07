@@ -1,14 +1,24 @@
 "use client";
+
 import React, { useContext, useEffect, useState } from "react";
-import { Row, Col, Card, Button, ListGroup } from "react-bootstrap";
+import { Row, Col, Card, Button } from "react-bootstrap";
 import CartItem from "@/components/cartItem/cartItem";
 import { Store } from "@/utils/store";
-
+import { useAuth } from "@/utils/authContext";
+import { useRouter } from "next/navigation";
 
 const CartPage = () => {
   const { state } = useContext(Store);
   const { cartItems } = state.cart;
   const [subtotal, setSubtotal] = useState(0);
+  const { isAuthenticated } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/login");
+    }
+  }, [isAuthenticated, router]);
 
   useEffect(() => {
     setSubtotal(
@@ -43,10 +53,9 @@ const CartPage = () => {
           </div>
         </Card>
 
-          <Button className="w-100 mb-3 p-2" variant="dark">
-            Go to Checkout
-          </Button>
-        
+        <Button className="w-100 mb-3 p-2" variant="dark">
+          Go to Checkout
+        </Button>
       </Col>
     </Row>
   );

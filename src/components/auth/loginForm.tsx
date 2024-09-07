@@ -1,21 +1,47 @@
+"use client";
+import { useAuth } from "@/utils/authContext";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [validated, setValidated] = useState(false);
+  const router = useRouter();
+  const { login } = useAuth();
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-  const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); 
+
     const form = event.currentTarget;
+
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+      event.stopPropagation(); 
+      setValidated(true);
+      return; 
+    }
+
+    const formData = new FormData(form);
+    const formValues = {
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+    };
+
+    // Attempt login and handle success or failure
+    const isSuccess = login(formValues);
+
+    if (isSuccess) {
+      toast.success("Successfully logged in");
+      router.push("/");
+    } else {
+      toast.error("Wrong Credentials");
     }
 
     setValidated(true);
@@ -47,6 +73,7 @@ const LoginForm = () => {
                 type="email"
                 placeholder="name@example.com"
                 required
+                name="email"
               />
               <Form.Control.Feedback type="invalid">
                 Please provide a valid email.
@@ -62,10 +89,11 @@ const LoginForm = () => {
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 required
+                name="password"
               />
               <i
                 className={`bi ${
-                  showPassword ? "bi-eye-slash" : "bi-eye"
+                  !showPassword ? "bi-eye-slash" : "bi-eye"
                 } position-absolute end-0 top-50 translate-middle-y me-2`}
                 style={{ cursor: "pointer" }}
                 onClick={handleTogglePassword}

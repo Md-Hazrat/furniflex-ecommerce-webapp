@@ -7,6 +7,7 @@ import { Col } from "react-bootstrap";
 import { useContext } from "react";
 import { Store } from "@/utils/store";
 import { toast } from "react-toastify";
+import { useAuth } from "@/utils/authContext";
 
 interface ProductItemProps {
   product: Product;
@@ -14,8 +15,13 @@ interface ProductItemProps {
 
 const ProductItem = ({ product }: ProductItemProps) => {
   const { state, dispatch } = useContext(Store);
+  const { isAuthenticated } = useAuth();
 
   const addToCartHandler = () => {
+    if(!isAuthenticated){
+      toast.error("Plesae login first")
+      return;
+    }
     const existItem = state.cart.cartItems.find((x) => x?.id === product?.id);
     const quantity = existItem ? existItem?.quantity + 1 : 1;
 

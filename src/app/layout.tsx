@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Barlow } from "next/font/google";
 import { StoreProvider } from "@/utils/store";
 import ToastProvider from "@/utils/toastProvider";
+import { AuthProvider } from "@/utils/authContext";
 
 export const metadata: Metadata = {
   title: "FurniFlex E-commerce",
@@ -24,11 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={barlow.className}>
-        <StoreProvider>
-          <ToastProvider>
-            <div>{children}</div>
-          </ToastProvider>
-        </StoreProvider>
+        <AuthProvider>
+          <StoreProvider>
+            <ToastProvider>
+              <div>{children}</div>
+            </ToastProvider>
+          </StoreProvider>
+        </AuthProvider>
       </body>
     </html>
   );

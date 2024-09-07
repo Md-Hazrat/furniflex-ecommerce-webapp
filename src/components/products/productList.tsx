@@ -14,7 +14,6 @@ const ProductList = ({ products }: ProductListProps) => {
 
   const onClickSort = (categoryId: number) => {
     setActiveCategory(categoryId);
-    console.log("selected category", categoryId);
   };
 
   return (

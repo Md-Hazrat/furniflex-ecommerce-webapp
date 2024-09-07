@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useContext } from "react";
 import Image from "next/image";
@@ -51,7 +50,7 @@ const Header = () => {
                     width={24}
                     className="cursor-pointer"
                   />
-                  {cartItemCount > 0 && (
+                  {cartItemCount > 0 ? (
                     <div
                       className="position-absolute translate-middle badge rounded-pill bg-black text-white"
                       style={{
@@ -62,6 +61,18 @@ const Header = () => {
                       }}
                     >
                       {cartItemCount}
+                    </div>
+                  ) : (
+                    <div
+                      className="position-absolute translate-middle badge rounded-pill bg-black text-white"
+                      style={{
+                        fontSize: "0.6rem",
+                        padding: "0.2em 0.4em",
+                        top: "1.4rem",
+                        left: "1.2rem",
+                      }}
+                    >
+                      0
                     </div>
                   )}
                 </Link>

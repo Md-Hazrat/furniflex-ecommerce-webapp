@@ -1,33 +1,44 @@
 "use client";
+import { useAuth } from "@/utils/authContext";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import {
-  Button,
-  Card,
-  Col,
-  FloatingLabel,
-  Form,
-  Row
-} from "react-bootstrap";
+import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [validated, setValidated] = useState(false);
+  const router = useRouter();
+  const { signup } = useAuth();
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-  const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const form = event.currentTarget;
-    if (form?.checkValidity() === false) {
-      event?.preventDefault();
-      event?.stopPropagation();
+
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
+    } else {
+      const formData = new FormData(form);
+      const formValues = {
+        firstName: formData.get("firstName") as string,
+        lastName: formData.get("lastName") as string,
+        email: formData.get("email") as string,
+        password: formData.get("password") as string,
+      };
+
+      signup(formValues);
+
+      router.push("/login");
     }
 
     setValidated(true);
   };
+
   return (
     <div className="d-flex justify-content-center">
       <Card className="image-bg border-0">
@@ -57,6 +68,7 @@ const SignUpForm = () => {
                     <Form.Control
                       type="text"
                       placeholder="First name (optional)"
+                      name="firstName"
                     />
                   </FloatingLabel>
                 </Col>
@@ -70,6 +82,7 @@ const SignUpForm = () => {
                     <Form.Control
                       type="text"
                       placeholder="Last name (optional)"
+                      name="lastName"
                     />
                   </FloatingLabel>
                 </Col>
@@ -85,6 +98,7 @@ const SignUpForm = () => {
                 type="email"
                 placeholder="name@example.com"
                 required
+                name="email"
               />
               <Form.Control.Feedback type="invalid">
                 Please provide a valid email.
@@ -100,6 +114,7 @@ const SignUpForm = () => {
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 required
+                name="password"
               />
               <i
                 className={`bi ${
@@ -117,7 +132,7 @@ const SignUpForm = () => {
               <Form.Check
                 type="checkbox"
                 label="I agree to the Terms & Policy"
-                id="rememberMe"
+                id="termsPolicy"
                 required
               />
               <Form.Control.Feedback type="invalid">
@@ -147,7 +162,7 @@ const SignUpForm = () => {
                   variant="outline-dark"
                   className="d-flex align-items-center w-100"
                 >
-                  <i className="bi bi-github me-2"></i>Sign in with Apple
+                  <i className="bi bi-github me-2"></i> Sign in with Apple
                 </Button>
               </Col>
             </Row>

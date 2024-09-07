@@ -1,18 +1,6 @@
-const data = {
-  /*  users: [
-    {
-      id: 1,name: 'John',
-      email: 'admin@example.com',
-      password: bcrypt.hashSync('123456'),
-      isAdmin: true,
-    },
-    {
-      id: 1,name: 'Jane',
-      email: 'user@example.com',
-      password: bcrypt.hashSync('123456'),
-      isAdmin: false,
-    },
-  ], */
+import { Product } from "./ProductModel";
+
+const data: { products: Product[] } = {
   products: [
     {
       id: 1,
@@ -27,7 +15,6 @@ const data = {
       numReviews: 8,
       countInStock: 20,
       description: "A Recliner Chair Wood",
-      isFeatured: true,
       banner: "/images/banner1.jpg",
     },
     {
@@ -43,7 +30,6 @@ const data = {
       numReviews: 10,
       countInStock: 20,
       description: "A popular shirt",
-      isFeatured: true,
       banner: "/images/banner2.jpg",
     },
     {
@@ -93,7 +79,7 @@ const data = {
       name: "Minimal Empty Rocking",
       offerPercent: 20,
       slug: "Empty Rocking",
-      categoryId: "Chairs",
+      categoryId: 2,
       image: "/images/image 149.png",
       price: 75,
       brand: "Casely",
